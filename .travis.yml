@@ -1,0 +1,19 @@
+language: c
+
+os:
+ - linux
+ - osx
+ 
+compiler:
+ - gcc
+ - clang
+ 
+install:
+ - git clone --branch=dev https://github.com/tboox/xmake.git tboox/xmake --depth 1
+ - cd ./tboox/xmake
+ - ./scripts/get.sh __LOCAL__
+ - cd -
+
+script:
+ - xmake
+ - xmake r test
