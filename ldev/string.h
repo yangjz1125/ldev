@@ -1,3 +1,26 @@
+/* LDev library 
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Copyright (c) 2018, YangJZ.
+ * Author: YangJZ
+ * File : string.h
+ */
+
 #ifndef _LDEV_STRING_
 #define _LDEV_STRING_
 #include <stdlib.h>
@@ -78,7 +101,26 @@ void lstring_append_char(lstring_t *str, char c);
 /*
  * get the length of str
  */
-static inline size_t lstring_length(lstring_t *str){
-	return str->_length;
-}
+static inline size_t lstring_length(lstring_t *str)
+{return str->_length;}
+
+/*
+ * get the lstring_t's length
+ */
+static inline char* lstring_data(lstring_t *str)
+{return str->_data;}
+
+/*
+ * Iterators
+ * Please use lstring_iter_t as a pointer.
+ */
+typedef char* lstring_iter_t;
+typedef const char* lstring_citer_t;
+
+static inline lstring_iter_t lstring_begin(lstring_t *str)
+{return str->_data;}
+
+static inline lstring_iter_t lstring_end(lstring_t *str)
+{return str->_data+str->_length;}
+
 #endif
