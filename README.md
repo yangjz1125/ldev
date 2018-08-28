@@ -1,4 +1,4 @@
-# **ldev**
+# **ldev** [中文](README_zh.md)
 ## A lightweight devlopment C library.
 ---
 ## Build & Install
@@ -18,5 +18,5 @@ Include `<ldev/*.h>` to use basic ldev.
 ---
 
 ## TODO list
-### string split replace and so on.
+### string split and so on.
 ### linkedlist
