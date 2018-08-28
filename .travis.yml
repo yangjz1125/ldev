@@ -1,5 +1,7 @@
 language: c
 
+sudo: true
+
 os:
  - linux
  - osx
@@ -11,9 +13,11 @@ compiler:
 install:
  - git clone --branch=dev https://github.com/tboox/xmake.git tboox/xmake --depth 1
  - cd ./tboox/xmake
- - ./scripts/get.sh __LOCAL__
+ - make build
+ - sudo make install
  - cd -
 
 script:
  - xmake
- - xmake r test
+ - sudo xmake install
+ - xmake r ldev_test
