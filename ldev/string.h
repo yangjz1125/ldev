@@ -123,4 +123,11 @@ static inline lstring_iter_t lstring_begin(lstring_t *str)
 static inline lstring_iter_t lstring_end(lstring_t *str)
 {return str->_data+str->_length;}
 
+/*
+ * replace a to b.
+ */
+void lstring_replace_char(lstring_t *str, char a, char b);
+void lstring_replace_cstr(lstring_t *str, const char *a, const char *b);
+void lstring_replace(lstring_t *str, const lstring_t *a, const lstring_t *b);
+
 #endif
