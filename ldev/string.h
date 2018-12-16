@@ -36,7 +36,15 @@ struct _lstring_t {
 	size_t _length, _bufsize;
 };
 
+struct _lstring_kmp_cache_t{
+    /*
+     * string information cache
+     */
+    size_t *_cache;
+};
+
 typedef struct _lstring_t lstring_t;
+typedef struct _lstring_kmp_cache_t lstring_kmp_cache_t;
 /*
  * get new lstring_t
  */
@@ -129,5 +137,20 @@ static inline lstring_iter_t lstring_end(lstring_t *str)
 void lstring_replace_char(lstring_t *str, char a, char b);
 void lstring_replace_cstr(lstring_t *str, const char *a, const char *b);
 void lstring_replace(lstring_t *str, const lstring_t *a, const lstring_t *b);
+
+/*
+ * find a in b
+ */
+lstring_iter_t lstring_find(lstring_t *str, lstring_t *par, lstring_kmp_cache_t *cache);
+
+/*
+ * get the KMP information cache of lstring
+ */
+lstring_kmp_cache_t *lstring_kmp_cache(lstring_t *str);
+
+/*
+ * free the KMP information cache of lstring
+ */
+void _lstring_kmp_cache(lstring_kmp_cache_t *cache);
 
 #endif
