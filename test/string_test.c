@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../ldev/string.h"
+#include "tests.h"
 int string_main(){
 	lstring_t *str = lstring_cstr("helohello helllo world");
 	lstring_kmp_cache_t *cache = lstring_kmp_cache(str);
