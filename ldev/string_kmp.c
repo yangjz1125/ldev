@@ -46,10 +46,14 @@ void _lstring_kmp_cache(lstring_kmp_cache_t *cache){
     free(cache);
 }
 
-lstring_iter_t lstring_find(lstring_t *str, lstring_t *par, lstring_kmp_cache_t *cache){
-    if(cache == NULL) return strstr(str->_data, par->_data);
+lstring_iter_t lstring_find(lstring_t *str, lstring_t *par ,lstring_kmp_cache_t *cache){
+    return lstring_find_from(str, par, 0, cache);
+}
+
+lstring_iter_t lstring_find_from(lstring_t *str, lstring_t *par, size_t index, lstring_kmp_cache_t *cache){
+    if(cache == NULL) return strstr(str->_data+index, par->_data);
     else 
-        for(size_t i = 0, j = 0; i < str->_length; ++i){
+        for(size_t i = index, j = 0; i < str->_length; ++i){
             while(j > 0 && str->_data[i] != par->_data[j]) j = cache->_cache[j-1];
             if(str->_data[i] != par->_data[j]) ++j;
             if(j == par->_length) return str->_data + i - j;

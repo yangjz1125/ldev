@@ -142,6 +142,7 @@ void lstring_replace(lstring_t *str, const lstring_t *a, const lstring_t *b);
  * find a in b
  */
 lstring_iter_t lstring_find(lstring_t *str, lstring_t *par, lstring_kmp_cache_t *cache);
+lstring_iter_t lstring_find_from(lstring_t *str, lstring_t *par, size_t index, lstring_kmp_cache_t *cache);
 
 /*
  * get the KMP information cache of lstring
