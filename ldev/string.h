@@ -24,6 +24,7 @@
 #ifndef _LDEV_STRING_
 #define _LDEV_STRING_
 #include <stdlib.h>
+#include "type.h"
 struct _lstring_t {
 	/*
 	 * string data.
@@ -59,6 +60,12 @@ void _lstring(lstring_t *str);
  * clone lstring_t
  */
 lstring_t* lstring_clone(const lstring_t *str);
+
+static ltype_t _lstring_type = {._size = sizeof(lstring_t),
+                                ._constructor = (void*(*)())lstring,
+                                ._destructor = (void(*)(void*))_lstring,
+                                ._clone = (void*(*)(void*))lstring_clone};
+static ltype_t *lstring_type = &_lstring_type;
 
 /*
  * cast char to lstring_t
